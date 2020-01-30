@@ -57,13 +57,17 @@ void setup()
 
 void loop()
 {
-  String value = Serial.readStringUntil('\n');
-  if (value.length() == 0)
+  String value;
+  if (Serial.available() > 0)
   {
-    return;
-  }
+    value = Serial.readStringUntil('\n');
+    if (value.length() == 0)
+    {
+      return;
+    }
 
-  Serial.println(value);
+    Serial.println(value);
+  }
 
   if (value.startsWith("AT+COLOR="))
   {
