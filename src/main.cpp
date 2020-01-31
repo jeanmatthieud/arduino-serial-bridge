@@ -67,35 +67,35 @@ void loop()
     }
 
     Serial.println(value);
-  }
 
-  if (value.startsWith("AT+COLOR="))
-  {
-    int r, g, b;
-    sscanf(value.c_str(), "AT+COLOR=%d;%d;%d", &r, &g, &b);
-    displayColor(pixels.Color(r, g, b));
-  }
-  else if (value.startsWith("AT+LAMP=ON"))
-  {
-    // turn the LED on (HIGH is the voltage level)
-    digitalWrite(WARNING_LIGHT_PIN, LOW);
-  }
-  else if (value.startsWith("AT+LAMP=OFF"))
-  {
-    // turn the LED off by making the voltage LOW
-    digitalWrite(WARNING_LIGHT_PIN, HIGH);
-  }
-  else if (value.startsWith("AT+COUNTER1="))
-  {
-    sscanf(value.c_str(), "AT+COUNTER1=%d", &topic1CounterValue);
-  }
-  else if (value.startsWith("AT+COUNTER2="))
-  {
-    sscanf(value.c_str(), "AT+COUNTER2=%d", &topic2CounterValue);
-  }
-  else
-  {
-    Serial.println("ERROR");
+    if (value.startsWith("AT+COLOR="))
+    {
+      int r, g, b;
+      sscanf(value.c_str(), "AT+COLOR=%d;%d;%d", &r, &g, &b);
+      displayColor(pixels.Color(r, g, b));
+    }
+    else if (value.startsWith("AT+LAMP=ON"))
+    {
+      // turn the LED on (HIGH is the voltage level)
+      digitalWrite(WARNING_LIGHT_PIN, LOW);
+    }
+    else if (value.startsWith("AT+LAMP=OFF"))
+    {
+      // turn the LED off by making the voltage LOW
+      digitalWrite(WARNING_LIGHT_PIN, HIGH);
+    }
+    else if (value.startsWith("AT+COUNTER1="))
+    {
+      sscanf(value.c_str(), "AT+COUNTER1=%d", &topic1CounterValue);
+    }
+    else if (value.startsWith("AT+COUNTER2="))
+    {
+      sscanf(value.c_str(), "AT+COUNTER2=%d", &topic2CounterValue);
+    }
+    else
+    {
+      Serial.println("ERROR");
+    }
   }
 
   // processConfigButton();
