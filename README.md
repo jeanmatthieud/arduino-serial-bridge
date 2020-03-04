@@ -26,7 +26,7 @@ To be able to use the serial port, the user has to be added to the `dialout` gro
 # AT Commands
 The device can respond to AT Commands.
 
-## Lamp sate
+## Lamp state
 ```
 AT+LAMP=1
 AT+LAMP=0
